@@ -9,7 +9,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>DASHBOARD</h2>
+        {{-- <a href="{{ route('admin.tag.create') }}" class="btn btn-primary waves-effect">Add New Tag</a> --}}
     </div>
 
     <!-- Widgets -->
@@ -319,5 +319,5 @@
 @endsection
 
 @push('js')
-
+<script src="{{ asset('assets/backend/js/pages/index.js') }}"></script>
 @endpush

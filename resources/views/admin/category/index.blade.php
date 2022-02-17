@@ -1,6 +1,6 @@
 @extends('layouts.backend.app')
 
-@section('title','Tag')
+@section('title','Category')
 
 @push('css')
 <link href="{{ asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -11,9 +11,9 @@
 <div class="container-fluid">
     <div class="block-header">
         <h2>
-            <a href="{{ route('admin.tag.create') }}" class="btn btn-primary waves-effect">
+            <a href="{{ route('admin.category.create') }}" class="btn btn-primary waves-effect">
                 <i class="material-icons">add</i>
-                <span>Add New Tag</span>
+                <span>Add New category</span>
             </a>
         </h2>
     </div>
@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        ALL TAGS
+                        ALL category
                     </h2>
 
                 </div>
@@ -50,21 +50,21 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($tags as $key=>$tag)
+                                @foreach ($categories as $key=>$category)
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $tag->name }}</td>
-                                    <td>{{ $tag->created_at }}</td>
-                                    <td>{{ $tag->updated_at }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->created_at }}</td>
+                                    <td>{{ $category->updated_at }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('admin.tag.edit',$tag->id) }}" class="btn btn-info waves-effect">
+                                        <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-info waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <button class="btn btn-danger waves-effect" type="button" onclick="deleteTag({{ $tag->id }})">
+                                        <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $category->id }})">
                                             <i class="material-icons">delete</i>
                                         </button>
-                                        <form id="delete-form-{{ $tag->id }}" action="{{ route('admin.tag.destroy',$tag->id) }}" method="POST" style="display: none;">
+                                        <form id="delete-form-{{ $category->id }}" action="{{ route('admin.category.destroy',$category->id) }}" method="POST" style="display: none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>
@@ -119,7 +119,7 @@
 <script src="{{ asset('assets/backend/js/pages/tables/jquery-datatable.js') }}"></script>
 <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
 <script type="text/javascript">
-    function deleteTag(id) {
+    function deleteCategory(id) {
         swal({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
